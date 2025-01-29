@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  phpstan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, bcmath, yaml
+
+      - name: Install dependencies
+        run: |
+          composer install --no-interaction --ignore-platform-req=*
+
+      - name: Run PHPStan
+        run: |
+          vendor/bin/phpstan analyse --configuration=phpstan.neon.dist
