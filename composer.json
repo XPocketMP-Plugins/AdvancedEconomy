@@ -1,0 +1,16 @@
+{
+  "name": "xpocketmp/advancedeconomy",
+  "description": "An advanced economy plugin for XPocketMP",
+  "type": "library",
+  "require": {
+    "xpocketmp/xpocketmp": "^5.0.0"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^1.11.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "\\AdvancedEconomy\\": "src/AdvancedEconomy"
+    }
+  }
+}
