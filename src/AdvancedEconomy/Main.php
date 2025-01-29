@@ -48,12 +48,6 @@ class Main extends PluginBase {
         $this->getServer()->getPluginManager()->registerEvents(new EntityKillListener($this), $this);
         $this->getServer()->getPluginManager()->registerEvents(new TransactionListener($this), $this);
         $this->getServer()->getPluginManager()->registerEvents(new SellListener($this), $this);
-
-        $this->getLogger()->info("AdvancedEconomy has been enabled!");
-    }
-
-    public function onDisable(): void {
-        $this->getLogger()->info("AdvancedEconomy has been disabled!");
     }
 
     public static function getInstance(): Main {
