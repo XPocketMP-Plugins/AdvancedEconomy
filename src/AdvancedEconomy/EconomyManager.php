@@ -44,6 +44,6 @@ class EconomyManager {
     }
 
     public function getDataBalance(): void{
-        $this->balances = new Config($plugin->getDataFolder() . "balances.yml", Config::YAML);
+        $this->balance = new Config($plugin->getDataFolder() . "balances.yml", Config::YAML);
     }
 }
