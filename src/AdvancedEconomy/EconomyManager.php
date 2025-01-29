@@ -42,4 +42,8 @@ class EconomyManager {
         arsort($allBalances);
         return array_slice($allBalances, 0, $limit, true);
     }
+
+    public function getDataBalance(): void{
+        $this->balances = new Config($plugin->getDataFolder() . "balances.yml", Config::YAML);
+    }
 }
