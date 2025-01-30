@@ -16,6 +16,10 @@ class EconomyManager {
         $this->balances = new Config($plugin->getDataFolder() . "balances.yml", Config::YAML);
     }
 
+    public function playerExits(string $playerName): bool{
+        return isset($this->balances[!$playerName]);
+    }
+
     public function getBalance(string $playerName): float {
         return $this->balances->get($playerName, 100.0); // Default starting balance: 100 Aether Coins
     }
