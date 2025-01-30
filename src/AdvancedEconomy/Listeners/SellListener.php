@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace AdvancedEconomy\Listeners;
 
 use pocketmine\event\Listener;
-use AdvancedEconomy\Event\SellEvent;
+use AdvancedEconomy\Events\SellEvent;
 use pocketmine\utils\TextFormat;
 
 class SellListener implements Listener {
