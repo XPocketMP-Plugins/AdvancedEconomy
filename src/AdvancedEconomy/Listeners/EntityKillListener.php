@@ -9,6 +9,7 @@ use pocketmine\entity\Entity;
 use pocketmine\entity\Human;
 use pocketmine\event\entity\EntityDeathEvent;
 use pocketmine\event\Listener;
+use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 
 class EntityKillListener implements Listener {
@@ -23,7 +24,7 @@ class EntityKillListener implements Listener {
         $entity = $event->getEntity();
         $damager = $entity->getLastDamageCause()?->getEntity();
 
-        if ($damager instanceof Human) {
+        if ($damager instanceof Player) {
             $player = $damager;
             $economy = $this->plugin->getEconomyManager();
 
