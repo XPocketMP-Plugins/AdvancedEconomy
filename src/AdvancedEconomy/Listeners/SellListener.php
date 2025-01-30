@@ -10,6 +10,10 @@ use pocketmine\utils\TextFormat;
 
 class SellListener implements Listener {
 
+    public function construct() {
+        //NOOP
+    }
+
     public function onSell(SellEvent $event): void {
         $player = $event->getPlayer();
         $item = $event->getItem();
