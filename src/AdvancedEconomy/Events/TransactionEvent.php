@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace AdvancedEconomy\Events;
 
+use pocketmine\event\CancellableTrait;
+use pocketmine\event\Cancellable;
 use pocketmine\event\Event;
 use pocketmine\player\Player;
 
-class TransactionEvent extends Event {
+class TransactionEvent extends Event implements Cancellable {
+    use CancellableTrait;
 
     private Player $sender;
     private Player $receiver;
