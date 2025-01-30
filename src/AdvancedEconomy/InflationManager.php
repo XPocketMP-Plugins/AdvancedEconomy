@@ -21,6 +21,13 @@ class InflationManager {
         return max(1, $totalSupply);
     }
 
+    public function getInflationRate(): float {
+        if ($this->currentSupply <= 0) {
+            return 0.0;
+        }
+    return ($this->baseValue * ($this->maxSupply / $this->currentSupply));
+    }
+
     public function getCoinValue(): float {
         return $this->baseValue * ($this->maxSupply / $this->getCurrentSupply());
     }
