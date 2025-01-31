@@ -10,8 +10,8 @@ use pocketmine\utils\TextFormat;
 
 class SellListener implements Listener {
 
-    public function __construct() {
-        //NOOP
+    public function __construct(Main $plugin) {
+        $this->plugin = $plugin;
     }
 
     public function onSell(SellEvent $event): void {
