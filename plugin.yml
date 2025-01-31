@@ -1,0 +1,41 @@
+name: AdvancedEconomy
+main: AdvancedEconomy\Main
+version: 1.0.0
+api: 5.0.0
+author: ClousClouds
+description: An economy plugin with currency strengthening mechanics.
+commands:
+  balance:
+    description: Check your Aether Coin balance.
+    usage: "/balance"
+  pay:
+    description: Transfer Aether Coins to another player.
+    usage: "/pay <player> <amount>"
+  setmoney:
+    description: Set a player's balance.
+    usage: "/setmoney <player> <amount>"
+    permission: advancedeconomy.admin
+  addmoney:
+    description: Add Aether Coins to a player's balance.
+    usage: "/addmoney <player> <amount>"
+    permission: advancedeconomy.admin
+  takemoney:
+    description: Remove Aether Coins from a player's balance.
+    usage: "/takemoney <player> <amount>"
+    permission: advancedeconomy.admin
+  moneytop:
+    description: View the richest players.
+    usage: "/moneytop"
+  sell:
+    description: Sell an item or block.
+    usage: "/sell"
+  sellall:
+    description: Sell all sellable items in your inventory.
+    usage: "/sellall"
+  inflation:
+    description: Check the currency inflation status.
+    usage: "/inflation"
+permissions:
+  advancedeconomy.admin:
+    description: Allows access to admin economy commands.
+    default: op
