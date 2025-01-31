@@ -32,4 +32,9 @@ class InflationManager {
     public function getCoinValue(): float {
         return $this->baseValue * ($this->maxSupply / $this->getCurrentSupply());
     }
+
+    // This is defined so that there are no errors from PHPStan
+    public function logSupply(): void {
+           $this->plugin->getLogger()->info("Current supply: " . $this->currentSupply);
+    }
 }
