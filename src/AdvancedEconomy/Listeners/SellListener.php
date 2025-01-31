@@ -6,6 +6,7 @@ namespace AdvancedEconomy\Listeners;
 
 use pocketmine\event\Listener;
 use AdvancedEconomy\Events\SellEvent;
+use AdvancedEconomy\Main;
 use pocketmine\utils\TextFormat;
 
 class SellListener implements Listener {
