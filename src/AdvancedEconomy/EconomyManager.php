@@ -18,7 +18,8 @@ class EconomyManager {
     }
 
     public function getBalance(string $playerName): float {
-        return floatval($this->balances->get($playerName, 100.0)); // Default: 100 Aether Coins
+        $balance = $this->balances->get($playerName, 100.0); 
+        return is_numeric($balance) ? floatval($balance) : 100.0;
     }
 
     public function setBalance(string $playerName, float $amount): void {
@@ -43,11 +44,12 @@ class EconomyManager {
      */
     public function getTopPlayers(int $limit = 10): array {
         $allBalances = $this->balances->getAll();
-        
-        // Pastikan setiap nilai di-cast ke float tanpa menggunakan array_map langsung
+
         $convertedBalances = [];
         foreach ($allBalances as $player => $balance) {
-            $convertedBalances[(string) $player] = floatval($balance);
+            if (is_numeric($balance)) {
+                $convertedBalances[(string) $player] = floatval($balance);
+            }
         }
 
         arsort($convertedBalances);
