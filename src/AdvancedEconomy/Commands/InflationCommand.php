@@ -9,6 +9,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 use AdvancedEconomy\InflationManager;
+use AdvancedEconomy\Main;
 
 class InflationCommand extends Command {
 
