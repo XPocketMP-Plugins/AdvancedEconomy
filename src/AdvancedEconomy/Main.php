@@ -39,7 +39,7 @@ class Main extends PluginBase {
             new TopMoneyCommand($this),
             new SellCommand($this),
             new SellAllCommand($this),
-            new InflationCommand($this)
+            new InflationCommand($this->getInflationManager())
         ]);
 
         $this->getServer()->getPluginManager()->registerEvents(new PlayerJoinListener($this), $this);
