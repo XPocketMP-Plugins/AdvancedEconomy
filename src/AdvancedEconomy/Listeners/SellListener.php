@@ -14,7 +14,7 @@ class SellListener implements Listener {
     private Main $plugin;
 
     public function __construct(Main $plugin) {
-        //NOOP
+        $this->plugin = $plugin;
     }
 
     public function onSell(SellEvent $event): void {
