@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace AdvancedEconomy;
 
-use pocketmine\player\Player;
 use pocketmine\utils\Config;
 
 class EconomyManager {
@@ -17,15 +16,15 @@ class EconomyManager {
     }
 
     public function playerExists(string $playerName): bool {
-        return isset($this->balances[$playerName]);
+        return $this->balances->exists($playerName);
     }
 
     public function getBalance(string $playerName): float {
-        return $this->balances->get($playerName, 100.0); // Default starting balance: 100 Aether Coins
+        return (float) $this->balances->get($playerName, 100.0); // Default: 100 Aether Coins
     }
 
     public function setBalance(string $playerName, float $amount): void {
-        $this->balances->set($playerName, max(0, $amount));
+        $this->balances->set($playerName, max(0, round($amount, 2))); // Dibulatkan ke 2 desimal
         $this->balances->save();
     }
 
@@ -43,11 +42,8 @@ class EconomyManager {
 
     public function getTopPlayers(int $limit = 10): array {
         $allBalances = $this->balances->getAll();
+        $allBalances = array_map('floatval', $allBalances); // Pastikan semua jadi float
         arsort($allBalances);
         return array_slice($allBalances, 0, $limit, true);
-    }
-
-    public function getDataBalance(): void{
-        $this->balance = new Config($plugin->getDataFolder() . "balances.yml", Config::YAML);
     }
 }
