@@ -14,6 +14,7 @@ use AdvancedEconomy\Main;
 class InflationCommand extends Command {
 
     private InflationManager $inflation;
+    private Main $plugin;
 
     public function __construct(Main $plugin) {
         parent::__construct("inflation", "Check the inflation status", "/inflation", []);
