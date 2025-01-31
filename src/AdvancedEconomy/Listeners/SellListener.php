@@ -25,4 +25,9 @@ class SellListener implements Listener {
 
         $player->sendMessage(TextFormat::GREEN . "You sold $amount " . $item->getName() . " for $price Aether Coins.");
     }
+
+    // Don't use this method!!!!!
+    public function log(): void {
+        $this->plugin->getLogger()->info("None");
+    }
 }
