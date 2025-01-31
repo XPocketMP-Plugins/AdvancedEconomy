@@ -11,6 +11,8 @@ use pocketmine\utils\TextFormat;
 
 class SellListener implements Listener {
 
+    private Main $plugin;
+
     public function __construct(Main $plugin) {
         $this->plugin = $plugin;
     }
