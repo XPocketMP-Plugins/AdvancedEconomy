@@ -14,9 +14,10 @@ class InflationCommand extends Command {
 
     private InflationManager $inflation;
 
-    public function __construct(InflationManager $inflation) {
+    public function __construct(Main $plugin) {
         parent::__construct("inflation", "Check the inflation status", "/inflation", []);
         $this->inflation = $inflation;
+        $this->plugin = $plugin;
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args): void {
