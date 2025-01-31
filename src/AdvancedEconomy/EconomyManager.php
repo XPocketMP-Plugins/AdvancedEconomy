@@ -7,11 +7,9 @@ namespace AdvancedEconomy;
 use pocketmine\utils\Config;
 
 class EconomyManager {
-    private Main $plugin;
     private Config $balances;
 
     public function __construct(Main $plugin) {
-        $this->plugin = $plugin;
         $this->balances = new Config($plugin->getDataFolder() . "balances.yml", Config::YAML);
     }
 
@@ -20,11 +18,11 @@ class EconomyManager {
     }
 
     public function getBalance(string $playerName): float {
-        return (float) $this->balances->get($playerName, 100.0); // Default: 100 Aether Coins
+        return floatval($this->balances->get($playerName, 100.0)); // Default: 100 Aether Coins
     }
 
     public function setBalance(string $playerName, float $amount): void {
-        $this->balances->set($playerName, max(0, round($amount, 2))); // Dibulatkan ke 2 desimal
+        $this->balances->set($playerName, max(0, round($amount, 2)));
         $this->balances->save();
     }
 
@@ -40,10 +38,19 @@ class EconomyManager {
         return $this->getBalance($playerName) >= $amount;
     }
 
+    /**
+     * @return array<string, float> Top players sorted by balance
+     */
     public function getTopPlayers(int $limit = 10): array {
         $allBalances = $this->balances->getAll();
-        $allBalances = array_map('floatval', $allBalances); // Pastikan semua jadi float
-        arsort($allBalances);
-        return array_slice($allBalances, 0, $limit, true);
+        
+        // Pastikan setiap nilai di-cast ke float tanpa menggunakan array_map langsung
+        $convertedBalances = [];
+        foreach ($allBalances as $player => $balance) {
+            $convertedBalances[(string) $player] = floatval($balance);
+        }
+
+        arsort($convertedBalances);
+        return array_slice($convertedBalances, 0, $limit, true);
     }
 }
