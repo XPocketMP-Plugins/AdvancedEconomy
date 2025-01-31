@@ -6,6 +6,7 @@ namespace AdvancedEconomy;
 
 class InflationManager {
     private Main $plugin;
+    private float $currentSupply = 0.0;
     private float $baseValue = 1.0;
     private float $maxSupply = 1000000.0;
 
@@ -14,11 +15,11 @@ class InflationManager {
     }
 
     public function getCurrentSupply(): float {
-        $totalSupply = 0.0;
-        foreach ($this->plugin->getEconomyManager()->getTopPlayers() as $balance) {
-            $totalSupply += $balance;
-        }
-        return max(1, $totalSupply);
+        return $this->currentSupply;
+    }
+
+    public function setCurrentSupply(float $amount): void {
+        $this->currentSupply = max(0, $amount);
     }
 
     public function getInflationRate(): float {
