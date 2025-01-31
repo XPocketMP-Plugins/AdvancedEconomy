@@ -10,7 +10,7 @@ use pocketmine\utils\TextFormat;
 
 class SellListener implements Listener {
 
-    public function construct() {
+    public function __construct() {
         //NOOP
     }
 
